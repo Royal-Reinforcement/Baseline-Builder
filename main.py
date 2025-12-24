@@ -60,6 +60,7 @@ if file:
         grouped_df.columns          = ['Season', 'Daily_Rate', 'Nights']
         grouped_df['Weekly_Rate']   = grouped_df['Daily_Rate'] * 7
         grouped_df                  = grouped_df[['Season', 'Daily_Rate', 'Weekly_Rate']]
+        grouped_df                  = grouped_df[grouped_df['Season'] != 'Other']
         grouped_df                  = grouped_df.sort_values(by='Season', key=lambda x: [sdf[sdf['Season'] == s].index[0] for s in x])
         grouped_df                  = grouped_df.set_index('Season')
 
